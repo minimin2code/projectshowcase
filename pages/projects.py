@@ -10,14 +10,14 @@ import matplotlib.mlab as mlab
 import plotly.express as px
 import seaborn as sns
 sns.set()
-import datetime
 from datetime import datetime as dt
 import matplotlib.dates as mdates
 
 import numpy as np
 from scipy.stats import norm
 
-dash.register_page(__name__, title='App1', order=1)
+dash.register_page(__name__, title='App1', order=1, meta_tags=[{'name': 'viewport',
+                        'content': 'width=device-width, initial-scale=1.0, maximum-scale=1.2, minimum-scale=0.5,'}])
 
 df = pd.read_csv('assets/mystocks.csv')
 
@@ -90,27 +90,28 @@ def layout():
     dbc.Row([
         dbc.Col([
             dcc.Graph(id='line-grp', figure={})  # here is where we will put the graph we make
-        ], width=12)
+        ], #width=12
+        xs=12, sm=12, md=12, lg=12, xl=12, xxl=12)
     ]),
 
     dbc.Row([
           dbc.Col([
             #dbc.Label('Return Distribution'),
             dcc.Graph(id='bar-grp', figure={})  # here is where we will put the returns graph we
-        ], width=8),
+        ], xs=12, sm=12, md=12, lg=8, xl=8, xxl=8),
         
         
           dbc.Col([
             dbc.Label('Statistical Summary:'),
             html.Div(id='table-placeholder2', children=[])
-        ], width=4)
+        ],)
         
     ]),
 
     dbc.Row([
         dbc.Col([
             dcc.Graph(id='scatter-grp2', figure={})  # here is where we will put the graph we make
-        ], width=12)
+        ],xs=12, sm=12, md=12, lg=12, xl=12, xxl=12)
     ])
                 
 ])
@@ -172,8 +173,8 @@ def plot_data(selected_stock,start_date, end_date):
     y='%Return',
     labels={"Return":"Daily Return(%)"},  # map the labels
     title='Scatter plot of daily return',           # figure title
-    width=1200,                  # figure width in pixels
-    height=500,                # igure height in pixels
+    #width=1200,                  # figure width in pixels
+    #height=500,                # igure height in pixels
     template='plotly_white',     # 'ggplot2', 'seaborn', 'simple_white', 'plotly',
                                 # 'plotly_white', 'plotly_dark', 'presentation',
                                 # 'xgridoff', 'ygridoff', 'gridon', 'none'
