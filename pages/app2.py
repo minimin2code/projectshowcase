@@ -9,8 +9,9 @@ from datetime import datetime as dt
 
 from .side_bar import sidebar
 
-dash.register_page(__name__)
-
+# dash.register_page(__name__)
+dash.register_page(__name__, title='app2', order=2, meta_tags=[{'name': 'viewport',
+                        'content': 'width=device-width, initial-scale=1.0, maximum-scale=1.2, minimum-scale=0.5,'}])
 #read file
 dfcorr = pd.read_csv('assets/mystocks-corr.csv')
 
@@ -90,8 +91,9 @@ def layout():
         
     dbc.Row([
         dbc.Col([
-            dcc.Graph(id='heatmap', figure={})  # here is where we will put the graph we make
-        ], width=12)
+            dcc.Graph(id='heatmap', figure={})  
+        ], 
+        xs=12, sm=12, md=12, lg=12, xl=12, xxl=12)
     ]),                
 ])
 
