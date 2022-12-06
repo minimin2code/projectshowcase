@@ -13,7 +13,7 @@ layout = html.Div([
     html.Hr(),
     dcc.Markdown('I am an investment risk manager with a penchant for continuous learning \n'
                  'and self improvement. A crypto enthusiast and a geek at heart, I am also currently \n'
-                 'learning about NFTs, React Native for mobile app development and Dash. \n' 
+                 'learning Dash and React Native for mobile app development and. \n' 
                  'Love a good sweat and I trust that good things come to those who sweat. \n' 
                  'Absolutely love coding.',
                  style={'textAlign': 'center', 'white-space': 'pre'}, className='ms-3'),
