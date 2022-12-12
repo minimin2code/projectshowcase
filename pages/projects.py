@@ -214,4 +214,4 @@ def plot_data(selected_stock,start_date, end_date):
         data=dff.to_dict('records'),
     )
     
-    return scatterplot, html_line, fig_hist, mytable2
+    return scatterplot, html_line, fig_hist, mytable2 #scatterplot

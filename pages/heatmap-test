@@ -7,11 +7,18 @@ import plotly.express as px
 import datetime
 from datetime import datetime as dt
 
-from .side_bar import sidebar
+# from .side_bar import sidebar
 
 # dash.register_page(__name__)
-dash.register_page(__name__, title='app2', order=2, meta_tags=[{'name': 'viewport',
-                        'content': 'width=device-width, initial-scale=1.0, maximum-scale=1.2, minimum-scale=0.5,'}])
+# dash.register_page(__name__, title='app2', order=2, meta_tags=[{'name': 'viewport',
+#                         'content': 'width=device-width, initial-scale=1.0, maximum-scale=1.2, minimum-scale=0.5,'}])
+
+app = dash.Dash(__name__,
+                external_stylesheets=[dbc.themes.SPACELAB],
+                meta_tags=[{'name': 'viewport',
+                            'content': 'width=device-width, initial-scale=1.0, maximum-scale=1.2, minimum-scale=0.5,'}]
+                )
+
 #read file
 dfcorr = pd.read_csv('assets/mystocks-corr.csv')
 
@@ -43,10 +50,6 @@ def layout():
     return html.Div([
     dbc.Row(
         [
-            # dbc.Col(
-            #     [
-            #         sidebar()
-            #     ], xs=4, sm=4, md=2, lg=2, xl=2, xxl=2),
 
             dbc.Col(
                 [ 
@@ -59,7 +62,7 @@ def layout():
                         clearable=False,
                         options=[{'label': x, 'value': x} for x in dfcorr.columns              
         ])
-                ], xs=6, sm=6, md=5, lg=5, xl=5, xxl=5),
+                ], xs=4, sm=4, md=4, lg=4, xl=4, xxl=4),
             dbc.Col(
                 [
                     html.P("Select Period:",
@@ -86,14 +89,12 @@ def layout():
                                         persisted_props=['start_date'],
                                         persistence_type='session',  
                                         updatemode='singledate'),
-                ], xs=6, sm=6, md=7, lg=7, xl=7, xxl=7),
+                ], xs=4, sm=4, md=6, lg=6, xl=6, xxl=6),
         ], align='center'),
         
     dbc.Row([
         dbc.Col([
-           # dcc.Graph(id='heatmap', figure=dict(layout=dict(autosize=True)))  
-           dcc.Graph(id='heatmap', figure={}) 
-           
+            dcc.Graph(id='heatmap', figure={})  
         ], 
         xs=12, sm=12, md=12, lg=12, xl=12, xxl=12)
     ]),                
@@ -115,14 +116,14 @@ def plot_data(stock_slctd, start_date, end_date):
     #return corr_matrixtwo
     
     #heatmap for correl matrix
-    fig = px.imshow(round(corr_matrixtwo,4), text_auto=True, color_continuous_scale='blues') #greens
-    #fig.update_layout(height=900, width=900, autosize = True)
-    #fig.update_xaxes(side="top")
-    fig.update_layout(template='plotly_white', autosize = True)
-    
-    # fig.update_layout(margin = dict(t=200,r=200,b=200,l=200),
-    # showlegend = False,
-    # width = 700, height = 700,
-    # autosize = True)
+    fig = px.imshow(round(corr_matrixtwo,4), text_auto=True, color_continuous_scale='greens')
+    fig.update_layout(height=900, width=900)
        
     return fig
+
+
+app.layout = dbc.Container([dash.page_container], fluid=False)
+
+if __name__ == '__main__':
+	#app.run_server()
+    app.run_server(host='localhost',port=8060)
