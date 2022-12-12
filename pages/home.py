@@ -25,7 +25,7 @@ layout = html.Div([
         dbc.Col([
             dcc.Markdown('''
             * Market risk analysis 
-            * Performance and risk attribution
+            * Risk attribution
             * Portfolio management
             * Data analytics
             * Risk and compliance
