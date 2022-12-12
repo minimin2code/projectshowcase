@@ -12,9 +12,9 @@ layout = html.Div([
     dcc.Markdown('### About Me', style={'textAlign': 'center'},className='row'),
     html.Hr(),
     dcc.Markdown('I am an investment risk manager with a penchant for continuous learning \n'
-                 'and self improvement. A crypto enthusiast and a geek at heart, I am also currently \n'
-                 'learning about NFTs, React Native for mobile app development and Dash. \n' 
-                 'Love a good sweat and I trust that good things come to those who sweat. \n' 
+                 'and self improvement. A crypto enthusiast and a geek at heart, I am also \n'
+                 'currently learning about NFTs, React Native for mobile app development and\n' 
+                 'Dash. Love a good sweat and I trust that good things come to those who sweat.\n' 
                  'Absolutely love coding.',
                  style={'textAlign': 'center', 'white-space': 'pre'}, className='ms-3'),
                 
@@ -24,18 +24,20 @@ layout = html.Div([
     dbc.Row([
         dbc.Col([
             dcc.Markdown('''
-            * Market risk analysis 
+            * Risk analysis
             * Risk attribution
             * Portfolio management
             * Data analytics
-            * Risk and compliance
+            * Investment compliance
+            * Financial Modeling
             ''')
         ], width={"size": 3, "offset": 1}),
         dbc.Col([
             dcc.Markdown('''
             * VBA
             * Python
-            * HTML, CSS
+            * HTML
+            * CSS
             * Bloomberg
             * Tableau
             ''')
